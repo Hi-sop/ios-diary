@@ -2,7 +2,7 @@
 //  DiaryMO+CoreDataProperties.swift
 //  Diary
 //
-//  Created by Hisop on 2024/01/12.
+//  Created by Hisop on 2024/01/15.
 //
 //
 
@@ -19,6 +19,7 @@ extension DiaryMO {
     @NSManaged public var title: String?
     @NSManaged public var body: String?
     @NSManaged public var createAt: Int16
+    @NSManaged public var index: Int16
 
 }
 
