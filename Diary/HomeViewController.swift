@@ -8,14 +8,12 @@ import UIKit
 
 final class HomeViewController: UIViewController, UITableViewDataSource {
     private let tableView = UITableView()
-    private let jsonDecoder = JsonDecoder()
     private var diaryData: [Diary] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
-        diaryData = jsonDecoder.decodeSampleData()
         autoLayoutInit()
     }
     
@@ -33,7 +31,11 @@ final class HomeViewController: UIViewController, UITableViewDataSource {
     }
     
     @objc private func touchUpPlusButton() {
-        pushToDiaryDetailViewController(indexPath: nil)
+        let newDiary: Diary = Diary(title: "",
+                                    body: "",
+                                    createdAt: Int(Date().timeIntervalSince1970))
+        diaryData.append(newDiary)
+        pushToDiaryDetailViewController(indexPath: diaryData.endIndex)
     }
 }
 
