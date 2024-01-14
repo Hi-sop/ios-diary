@@ -35,7 +35,7 @@ final class HomeViewController: UIViewController, UITableViewDataSource {
                                     body: "",
                                     createdAt: Int(Date().timeIntervalSince1970))
         diaryData.append(newDiary)
-        pushToDiaryDetailViewController(indexPath: diaryData.endIndex)
+        pushToDiaryDetailViewController(indexPath: diaryData.endIndex - 1)
     }
 }
 
