@@ -7,8 +7,21 @@
 import UIKit
 
 final class HomeViewController: UIViewController, UITableViewDataSource {
+    private let appDelegate: AppDelegate
     private let tableView = UITableView()
     private var diaryData: [Diary] = []
+    
+    init(diaryData: [Diary] = []) {
+        guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        self.appDelegate = delegate
+        self.diaryData = diaryData
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
