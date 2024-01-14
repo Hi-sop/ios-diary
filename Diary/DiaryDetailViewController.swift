@@ -45,6 +45,19 @@ extension DiaryDetailViewController {
         dateFormatter.dateFormat = "yyyy년 MM월 dd일"
         
         self.navigationItem.title = dateFormatter.string(from: title)
+        
+        let rightItemButton = UIBarButtonItem(
+            title: "더보기", 
+            style: .plain,
+            target: self,
+            action: #selector(touchUpMoreButton))
+        
+        self.navigationItem.rightBarButtonItem = rightItemButton
+        
+    }
+    
+    @objc private func touchUpMoreButton() {
+        print("More Button!!")
     }
     
     private func autoLayoutInit() {

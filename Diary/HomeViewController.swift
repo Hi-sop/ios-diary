@@ -31,9 +31,10 @@ final class HomeViewController: UIViewController, UITableViewDataSource {
     }
     
     @objc private func touchUpPlusButton() {
-        let newDiary: Diary = Diary(title: "",
-                                    body: "",
-                                    createdAt: Int(Date().timeIntervalSince1970))
+        let newDiary: Diary = Diary(
+            title: "",
+            body: "",
+            createdAt: Int(Date().timeIntervalSince1970))
         diaryData.append(newDiary)
         pushToDiaryDetailViewController(indexPath: diaryData.endIndex - 1)
     }
