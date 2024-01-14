@@ -7,14 +7,8 @@
 
 import Foundation
 
-final class Diary: Decodable {
+final class Diary {
     let title: String
     let body: String
     let createdAt: Int
-    
-    private enum CodingKeys: String, CodingKey {
-        case title
-        case body
-        case createdAt = "created_at"
-    }
 }
