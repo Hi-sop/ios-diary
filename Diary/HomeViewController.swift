@@ -17,6 +17,14 @@ final class HomeViewController: UIViewController, UITableViewDataSource {
         autoLayoutInit()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        updateData()
+    }
+    
+    private func updateData() {
+        fetchCoreData()
+    }
+    
     private func pushToDiaryDetailViewController(indexPath: Int?) {
         let diaryDetailViewController = DiaryDetailViewController()
         
@@ -37,6 +45,7 @@ final class HomeViewController: UIViewController, UITableViewDataSource {
             createdAt: Int(Date().timeIntervalSince1970)
         )
         diaryData.append(newDiary)
+        
         pushToDiaryDetailViewController(indexPath: diaryData.endIndex - 1)
     }
 }

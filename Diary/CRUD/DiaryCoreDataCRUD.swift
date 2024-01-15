@@ -43,16 +43,21 @@ extension HomeViewController {
         }
         
         do {
-            let diaryMOs = try delegate.persistentContainer.viewContext.fetch(DiaryMO.fetchRequest())
+            let diaryListMO = try delegate.persistentContainer.viewContext.fetch(DiaryListMO.fetchRequest())
             
-            for diaryMO in diaryMOs {
-                guard let title = diaryMO.title,
-                      let body = diaryMO.body else {
+            guard let diarysMO = diaryListMO.first?.diarys else {
+                return []
+            }
+            
+            for diaryMO in diarysMO {
+                guard let diary = diaryMO as? Diary else {
                     return []
                 }
                 
-                let newDiary = Diary(title: title, body: body, createdAt: Int(diaryMO.createAt))
-                diary.append(newDiary)
+                let diaryData = Diary(
+                    title: diary.title,
+                    body: diary.body,
+                    createdAt: diary.createdAt)
             }
         } catch {
             print(error.localizedDescription)
@@ -60,43 +65,4 @@ extension HomeViewController {
         
         return diary
     }
-    
-//    func updateCoreData(_ data: Diary) {
-//        let request = DiaryMO.fetchRequest()
-//        request.predicate = NSPredicate(format: "index == %@", data as CVarArg)
-//        
-//        do {
-//            let userMOs = try appDelegate.persistentContainer.viewContext.fetch(request)
-//            
-//            guard let userMO = userMOs.first else {
-//                return
-//            }
-//            
-//            userMO.name = data.name
-//            try appDelegate.persistentContainer.viewContext.save()
-//            
-//        } catch {
-//            print(error.localizedDescription)
-//        }
-//    }
-//    
-//    func deleteCoreData(_ data: User) {
-//        let request = UserMO.fetchRequest()
-//        request.predicate = NSPredicate(format: "id = %@", data.id as CVarArg)
-//        
-//        do {
-//            let userMOs = try appDelegate.persistentContainer.viewContext.fetch(request)
-//            
-//            guard let userMO = userMOs.first else {
-//                return
-//            }
-//            
-//            appDelegate.persistentContainer.viewContext.delete(userMO)
-//            
-//            try appDelegate.persistentContainer.viewContext.save()
-//            
-//        } catch {
-//            print(error.localizedDescription)
-//        }
-//    }
 }

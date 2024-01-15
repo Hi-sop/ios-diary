@@ -3,7 +3,10 @@
     <entity name="Diary" representedClassName=".DiaryMO" syncable="YES">
         <attribute name="body" attributeType="String"/>
         <attribute name="createAt" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="index" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" attributeType="String"/>
+        <relationship name="diaryList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DiaryList" inverseName="diarys" inverseEntity="DiaryList"/>
+    </entity>
+    <entity name="DiaryList" representedClassName=".DiaryListMO" syncable="YES">
+        <relationship name="diarys" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Diary" inverseName="diaryList" inverseEntity="Diary"/>
     </entity>
 </model>

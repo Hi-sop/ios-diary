@@ -19,7 +19,7 @@ extension DiaryMO {
     @NSManaged public var title: String?
     @NSManaged public var body: String?
     @NSManaged public var createAt: Int16
-    @NSManaged public var index: Int16
+    @NSManaged public var diaryList: DiaryListMO?
 
 }
 
