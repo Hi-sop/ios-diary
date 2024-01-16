@@ -2,7 +2,7 @@
 //  DiaryListMO+CoreDataClass.swift
 //  Diary
 //
-//  Created by Hisop on 2024/01/15.
+//  Created by Hisop on 2024/01/17.
 //
 //
 

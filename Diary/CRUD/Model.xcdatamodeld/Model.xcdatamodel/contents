@@ -2,7 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22222" systemVersion="22G74" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="Diary" representedClassName=".DiaryMO" syncable="YES">
         <attribute name="body" attributeType="String"/>
-        <attribute name="createAt" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="createdAt" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" attributeType="String"/>
         <relationship name="diaryList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DiaryList" inverseName="diarys" inverseEntity="DiaryList"/>
     </entity>

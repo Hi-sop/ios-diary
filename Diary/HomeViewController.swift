@@ -15,14 +15,21 @@ final class HomeViewController: UIViewController, UITableViewDataSource {
         
         configureUI()
         autoLayoutInit()
+        coreDataInit()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        updateData()
+        //updateData()
+        
     }
     
-    private func updateData() {
-        fetchCoreData()
+    private func datainit() {
+        let test = Diary(
+            title: "testTitle",
+            body: "testBody",
+            createdAt: Int(Date().timeIntervalSince1970)
+        )
+        saveCoreData(test)
     }
     
     private func pushToDiaryDetailViewController(indexPath: Int?) {
@@ -39,14 +46,23 @@ final class HomeViewController: UIViewController, UITableViewDataSource {
     }
     
     @objc private func touchUpPlusButton() {
-        let newDiary: Diary = Diary(
-            title: "",
-            body: "",
-            createdAt: Int(Date().timeIntervalSince1970)
-        )
-        diaryData.append(newDiary)
+//        let newDiary: Diary = Diary(
+//            title: "",
+//            body: "",
+//            createdAt: Int(Date().timeIntervalSince1970)
+//        )
+//        diaryData.append(newDiary)
+//        
+//        pushToDiaryDetailViewController(indexPath: diaryData.endIndex - 1)
+        datainit()
+        let temps = fetchCoreData()
+        for (index, temp) in temps.enumerated() {
+            print("\n index: \(index)")
+            print(temp.title)
+            print(temp.body)
+            print(temp.createdAt)
+        }
         
-        pushToDiaryDetailViewController(indexPath: diaryData.endIndex - 1)
     }
 }
 
